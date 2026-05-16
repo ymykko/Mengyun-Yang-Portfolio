@@ -20,3 +20,13 @@
 .project-cover:not(.small) img{height:auto;max-height:520px;object-fit:contain;background:#f8fbff;}
 .project-cover figcaption{position:absolute;left:12px;bottom:12px;padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.9);font-size:.76rem;font-weight:760;color:#1e3a8a;backdrop-filter:blur(8px)}
 /* keep old grid available for future multi-image galleries, but do not use on cards */
+
+
+/* Local stable preview images */
+.project-card{min-height:0;}
+.project-card .project-cover.small{height:180px;margin-bottom:16px;}
+.project-cover img{background:#f8fbff;}
+.project-card:not(:has(.project-cover)) {padding-top:28px;}
+@supports not selector(:has(*)) {
+  .project-card{min-height:0;}
+}

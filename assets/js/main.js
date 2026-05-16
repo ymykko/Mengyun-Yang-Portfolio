@@ -23,20 +23,14 @@ function driveThumb(url){
   return id ? `https://drive.google.com/thumbnail?id=${id}&sz=w1200` : '';
 }
 const coverMap = {
-  kaco: {src: rootPrefix()+'assets/images/kaco/kaco-01.jpg', label: 'Brand guideline cover'},
-  noodles: {src: rootPrefix()+'assets/images/generated/noodles.svg', label: 'Brand guideline preview'},
-  xppen: {src: rootPrefix()+'assets/images/generated/xppen.svg', label: 'Campaign proposal preview'},
-  meituan: {src: rootPrefix()+'assets/images/generated/meituan.svg', label: 'H5 and event materials preview'},
-  'fashion-xhs': {src: rootPrefix()+'assets/images/generated/fashion-xhs.svg', label: 'L’OFFICIEL China account preview'},
-  'campus-media': {src: rootPrefix()+'assets/images/generated/campus-media.svg', label: 'WeChat editorial preview'},
-  'personal-xhs': {src: rootPrefix()+'assets/images/generated/personal-xhs.svg', label: 'Personal account preview'},
-  crumbling: {src: rootPrefix()+'assets/images/generated/crumbling.svg', label: 'Short film preview'},
-  podcast: {src: rootPrefix()+'assets/images/generated/podcast.svg', label: 'Podcast preview'},
-  'small-designs': {src: rootPrefix()+'assets/images/generated/small-designs.svg', label: 'Creative experiments preview'},
-  youtube: {src: rootPrefix()+'assets/images/generated/youtube.svg', label: 'Data storytelling preview'},
-  tomodachi: {src: rootPrefix()+'assets/images/generated/tomodachi.svg', label: 'Network analysis preview'},
-  ceps: {src: rootPrefix()+'assets/images/generated/ceps.svg', label: 'Research poster preview'},
-  'news-image': {src: rootPrefix()+'assets/images/generated/news-image.svg', label: 'News image analysis preview'}
+  kaco: {src: rootPrefix()+'assets/images/covers/kaco.jpg', label: 'Brand guideline preview'},
+  noodles: {src: rootPrefix()+'assets/images/covers/noodles.jpg', label: 'Brand guideline preview'},
+  meituan: {src: rootPrefix()+'assets/images/covers/meituan.jpg', label: 'H5 activity page preview'},
+  crumbling: {src: rootPrefix()+'assets/images/covers/crumbling.jpg', label: 'Short film preview'},
+  podcast: {src: rootPrefix()+'assets/images/covers/podcast.jpg', label: 'Podcast trailer preview'},
+  'small-designs': {src: rootPrefix()+'assets/images/covers/small-designs.jpg', label: 'Creative works preview'},
+  tomodachi: {src: rootPrefix()+'assets/images/covers/tomodachi.jpg', label: 'Community analysis preview'},
+  ceps: {src: rootPrefix()+'assets/images/covers/ceps.jpg', label: 'Research poster preview'}
 };
 const caseHeadings = {
   en:{overview:'Project Overview', role:'My Role', process:'Process & Focus', outputs:'Preview & Key Outputs', links:'View Full Materials', summary:'Project Summary', note:'The preview image introduces the project visually. Full files, reports, production logs, and code are opened through the buttons below.'},
