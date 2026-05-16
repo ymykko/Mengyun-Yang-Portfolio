@@ -1,21 +1,11 @@
 # Mengyun Yang Portfolio Website
 
-Static GitHub Pages portfolio website.
+Updated GitHub Pages version.
 
-## Structure
+Changes in this version:
+- Replaced multi-placeholder preview blocks with one project preview image per project.
+- Uses Google Drive thumbnails where available and designed local cover images where screenshots are not yet available.
+- Corrected the project title to **L’OFFICIEL China Xiaohongshu Account**.
+- CV and LinkedIn links are connected.
 
-- `index.html` — homepage
-- `projects/project.html?id=...` — reusable project detail page
-- `assets/css/styles.css` — styles
-- `assets/js/data.js` — project content and external links
-- `assets/js/main.js` — language switching and rendering logic
-
-## Deploy
-
-Upload all files in this folder to the root of a GitHub repository and enable GitHub Pages from `main` / `(root)`.
-
-
-Updated links:
-- CV link is connected to Google Drive.
-- LinkedIn link is included in Contact.
-- L’OFFICIEL China account name is used for the Xiaohongshu project.
+Upload the contents of this folder to the repository root: `index.html`, `assets/`, `projects/`, and `README.md`.

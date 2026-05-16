@@ -13,48 +13,55 @@ function externalBtn(link, cls='btn'){return `<a class="${cls}" href="${link.url
 function initLangButtons(){document.querySelectorAll('[data-lang-btn]').forEach(b=>{b.classList.toggle('active', b.dataset.langBtn===getLang());b.onclick=()=>setLang(b.dataset.langBtn)})}
 function renderStaticText(){document.querySelectorAll('[data-i18n]').forEach(el=>{el.textContent=tr(el.dataset.i18n)});document.querySelectorAll('[data-i18n-html]').forEach(el=>{el.innerHTML=tr(el.dataset.i18nHtml)})}
 
-const previewLabels = {
-  en:['Project Context','Visual / Content Preview','Final Output'],
-  zh:['项目背景','视觉 / 内容预览','最终产出'],
-  zhHant:['項目背景','視覺 / 內容預覽','最終產出']
+
+function fileIdFromDrive(url){
+  const m = (url || '').match(/\/d\/([^/]+)/);
+  return m ? m[1] : '';
+}
+function driveThumb(url){
+  const id = fileIdFromDrive(url);
+  return id ? `https://drive.google.com/thumbnail?id=${id}&sz=w1200` : '';
+}
+const coverMap = {
+  kaco: {src: rootPrefix()+'assets/images/kaco/kaco-01.jpg', label: 'Brand guideline cover'},
+  noodles: {src: driveThumb(LINKS.noodlesGuideline), label: 'Brand guideline preview'},
+  xppen: {src: driveThumb(LINKS.xppenPdf), label: 'Campaign proposal preview'},
+  meituan: {src: driveThumb(LINKS.mtH5), label: 'H5 activity material preview'},
+  'fashion-xhs': {src: rootPrefix()+'assets/images/generated/fashion-xhs.svg', label: 'Account launch preview'},
+  'campus-media': {src: rootPrefix()+'assets/images/generated/campus-media.svg', label: 'WeChat editorial preview'},
+  'personal-xhs': {src: rootPrefix()+'assets/images/generated/personal-xhs.svg', label: 'Personal account preview'},
+  crumbling: {src: driveThumb(LINKS.crumblingVideo), label: 'Short film preview'},
+  podcast: {src: driveThumb(LINKS.podcastFinal), label: 'Podcast preview'},
+  'small-designs': {src: driveThumb(LINKS.homeMap), label: 'Creative experiments preview'},
+  youtube: {src: rootPrefix()+'assets/images/generated/youtube.svg', label: 'Data storytelling preview'},
+  tomodachi: {src: rootPrefix()+'assets/images/generated/tomodachi.svg', label: 'Network analysis preview'},
+  ceps: {src: driveThumb(LINKS.cepsPoster), label: 'Research poster preview'},
+  'news-image': {src: rootPrefix()+'assets/images/generated/news-image.svg', label: 'News image analysis preview'}
 };
 const caseHeadings = {
-  en:{overview:'Project Overview', role:'My Role', process:'Process & Focus', outputs:'Preview & Key Outputs', links:'View Full Materials', summary:'Project Summary', note:'Preview images are shown as selected case-study highlights. Replace placeholder panels with real screenshots when available.'},
-  zh:{overview:'项目概览', role:'我的角色', process:'过程与重点', outputs:'预览与核心产出', links:'查看完整材料', summary:'项目摘要', note:'这里展示的是项目详情页中的精选预览位。后续可以把占位预览替换成真实截图。'},
-  zhHant:{overview:'項目概覽', role:'我的角色', process:'過程與重點', outputs:'預覽與核心產出', links:'查看完整材料', summary:'項目摘要', note:'這裡展示的是項目詳情頁中的精選預覽位。後續可以把佔位預覽替換成真實截圖。'}
+  en:{overview:'Project Overview', role:'My Role', process:'Process & Focus', outputs:'Preview & Key Outputs', links:'View Full Materials', summary:'Project Summary', note:'The preview image introduces the project visually. Full files, reports, production logs, and code are opened through the buttons below.'},
+  zh:{overview:'项目概览', role:'我的角色', process:'过程与重点', outputs:'预览与核心产出', links:'查看完整材料', summary:'项目摘要', note:'预览图用于先让访问者快速理解项目风格或内容方向，完整文件、报告、production log 和代码可通过下方按钮打开。'},
+  zhHant:{overview:'項目概覽', role:'我的角色', process:'過程與重點', outputs:'預覽與核心產出', links:'查看完整材料', summary:'項目摘要', note:'預覽圖用於先讓訪問者快速理解項目風格或內容方向，完整文件、報告、production log 和代碼可通過下方按鈕打開。'}
 };
 function H(k){return caseHeadings[getLang()][k]}
 function projectProcess(p){
   const lang=getLang();
-  const title=loc(p.title);
   const isZh=lang!=='en';
   const common = {
-    brand: isZh ? '项目重点在于将前期调研转化为可执行的品牌视觉系统。页面会先呈现品牌问题、设计方向和核心视觉预览，再通过外部链接展示完整品牌手册与 production log。' : 'The project focuses on translating early-stage research into a coherent brand identity system. The case study first presents the design problem, creative direction, and selected visual previews, followed by links to the full brand guideline and production log.',
-    content: isZh ? '项目重点在于内容目标、受众理解、平台表达和最终传播物料之间的关系。页面会先说明项目背景和个人贡献，再展示关键内容/视觉预览，最后提供完整链接。' : 'The project focuses on the relationship between content objectives, audience understanding, platform expression, and final communication materials. The case study introduces the context and role first, then presents selected previews before linking to the full materials.',
-    data: isZh ? '项目重点在于研究问题、数据处理、分析方法和可视化叙事。页面会先概括研究逻辑，再展示报告或海报的核心输出，并保留完整 report 与 code 链接。' : 'The project focuses on research questions, data processing, analytical methods, and visual storytelling. The case study summarizes the research logic first, then highlights key outputs and keeps links to the full report and code.'
+    brand: isZh ? '项目重点在于将前期调研转化为可执行的品牌视觉系统。页面先呈现项目背景、个人角色和主要视觉预览，再通过外部链接展示完整品牌手册与 production log。' : 'The project focuses on translating early-stage research into a coherent brand identity system. The case study introduces the context and role first, presents a visual preview, then links to the full brand guideline and production log.',
+    content: isZh ? '项目重点在于内容目标、受众理解、平台表达和最终传播物料之间的关系。页面先说明项目背景和个人贡献，再展示关键内容/视觉预览，最后提供完整链接。' : 'The project focuses on the relationship between content objectives, audience understanding, platform expression, and final communication materials. The case study introduces the context and role first, then presents a selected preview before linking to the full materials.',
+    data: isZh ? '项目重点在于研究问题、数据处理、分析方法和可视化叙事。页面先概括研究逻辑，再展示报告或海报预览，并保留完整 report 与 code 链接。' : 'The project focuses on research questions, data processing, analytical methods, and visual storytelling. The case study summarizes the research logic first, then highlights a key visual output and keeps links to the full report and code.'
   };
   return common[p.category] || common.content;
 }
-function previewItems(p){
-  if(p.id==='kaco'){
-    return [
-      {img:rootPrefix()+'assets/images/kaco/kaco-01.jpg', title:'Brand guideline cover'},
-      {img:rootPrefix()+'assets/images/kaco/kaco-02.jpg', title:'Visual identity introduction'},
-      {img:rootPrefix()+'assets/images/kaco/kaco-11.jpg', title:'Logo and tone of voice'},
-      {img:rootPrefix()+'assets/images/kaco/kaco-15.jpg', title:'Colour system'}
-    ];
-  }
-  const lang=getLang();
-  const labels=previewLabels[lang];
-  const outputNames=p.links?.slice(0,3).map(l=>l.label.replace(/^View /,'').replace(/^Open /,'')).filter(Boolean) || [];
-  const fallback=[labels[0], labels[1], outputNames[0] || labels[2]];
-  return fallback.map((label,i)=>({placeholder:true,title:label,subtitle:i===0?loc(p.type):(outputNames[i]||loc(p.title))}));
-}
-function renderPreviewGrid(p, small=false){
-  return `<div class="preview-grid ${small?'small':''}">${previewItems(p).slice(0, small?2:4).map(item=> item.img ? `<figure class="preview-shot"><img src="${item.img}" alt="${item.title}"><figcaption>${item.title}</figcaption></figure>` : `<div class="preview-shot placeholder"><div class="placeholder-label">${item.title}</div><div class="placeholder-sub">${item.subtitle||''}</div></div>`).join('')}</div>`
+function coverFor(p){return coverMap[p.id] || null}
+function renderProjectCover(p, small=false){
+  const c = coverFor(p);
+  if(!c || !c.src) return '';
+  return `<figure class="project-cover ${small?'small':''}"><img src="${c.src}" alt="${c.label || loc(p.title)}" loading="lazy"><figcaption>${c.label || loc(p.title)}</figcaption></figure>`;
 }
 function projectCard(p){return `<article class="card project-card" data-category="${p.category}">
-  ${renderPreviewGrid(p,true)}
+  ${renderProjectCover(p,true)}
   <div class="meta">${tr('categories.'+p.category)}${p.subcat?' · '+tr('subcats.'+p.subcat):''}</div>
   <h3>${loc(p.title)}</h3>
   <p>${loc(p.overview)}</p>
@@ -88,7 +95,7 @@ function renderProjectPage(){
      <section class="case-section"><h2>${H('overview')}</h2><p>${loc(p.overview)}</p></section>
      <section class="case-section"><h2>${H('role')}</h2><p>${loc(p.role)}</p></section>
      <section class="case-section"><h2>${H('process')}</h2><p>${projectProcess(p)}</p></section>
-     <section class="case-section"><h2>${H('outputs')}</h2>${renderPreviewGrid(p,false)}<p class="note">${H('note')}</p></section>
+     <section class="case-section"><h2>${H('outputs')}</h2>${renderProjectCover(p,false)}<p class="note">${H('note')}</p></section>
      ${media}
      <section class="case-section"><h2>${H('links')}</h2><div class="link-list">${p.links.map(l=>externalBtn(l, 'btn primary')).join('')}</div></section>
    </article>

@@ -118,11 +118,11 @@ const projects = [
   },
   {
     id:'fashion-xhs', category:'content', subcat:'social', featured:true,
-    title:{en:'Fashion Magazine Xiaohongshu Account', zh:'时装杂志社小红书账号运营', zhHant:'時裝雜誌社小紅書賬號運營'},
+    title:{en:'L’OFFICIEL China Xiaohongshu Account', zh:'时装杂志社小红书账号运营', zhHant:'時裝雜誌社小紅書賬號運營'},
     type:{en:'Account Launch / Short-form Content / Social Media Strategy', zh:'账号冷启动 / 短视频内容 / 社媒策略', zhHant:'賬號冷啟動 / 短影片內容 / 社媒策略'},
     tools:['Adobe Premiere','CapCut','Xiaohongshu'],
     role:{en:'Built and operated the L’OFFICIEL China official Xiaohongshu account from 0 to 1; developed creative ideas and scripts, coordinated shooting, and independently edited content. The account received 22.7K likes and saves.', zh:'从0到1搭建并运营官方小红书账号，实现账号冷启动与账号识别建立；在明确账号目的后进行创意与脚本构思，沟通拍摄时间，并独立完成剪辑。账号累计获得22.7K次赞与收藏。', zhHant:'從0到1搭建並運營官方小紅書賬號，實現賬號冷啟動與賬號識別建立；在明確賬號目的後進行創意與腳本構思，溝通拍攝時間，並獨立完成剪輯。賬號累計獲得22.7K次讚與收藏。'},
-    overview:{en:'A social media content practice focused on launching and shaping the L’OFFICIEL China L’OFFICIEL China official Xiaohongshu account. The work emphasizes topic selection, creative scripting, shooting coordination, editing, account identity, and audience engagement.', zh:'这是一个围绕 L’OFFICIEL China 小红书官方账号冷启动和内容定位展开的社媒实践项目，重点包括选题判断、创意脚本、拍摄沟通、剪辑、账号识别建立和用户互动。', zhHant:'這是一個圍繞 L’OFFICIEL China 小紅書官方賬號冷啟動和內容定位展開的社媒實踐項目，重點包括選題判斷、創意腳本、拍攝溝通、剪輯、賬號識別建立和用戶互動。'},
+    overview:{en:'A social media content practice focused on launching and shaping the L’OFFICIEL China official Xiaohongshu account. The work emphasizes topic selection, creative scripting, shooting coordination, editing, account identity, and audience engagement.', zh:'这是一个围绕 L’OFFICIEL China 小红书官方账号冷启动和内容定位展开的社媒实践项目，重点包括选题判断、创意脚本、拍摄沟通、剪辑、账号识别建立和用户互动。', zhHant:'這是一個圍繞 L’OFFICIEL China 小紅書官方賬號冷啟動和內容定位展開的社媒實踐項目，重點包括選題判斷、創意腳本、拍攝溝通、剪輯、賬號識別建立和用戶互動。'},
     links:[{label:'View Profile',url:LINKS.fashionProfile},{label:'Selected Post 1',url:LINKS.fashionPost1},{label:'Selected Post 2',url:LINKS.fashionPost2}], cover:'XHS'
   },
   {

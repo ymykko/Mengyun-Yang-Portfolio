@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-label="YouTube Comments">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e0f2fe"/><stop offset="0.55" stop-color="#ffffff"/><stop offset="1" stop-color="#fce7f3"/></linearGradient>
+    <filter id="s" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#295791" flood-opacity="0.12"/></filter>
+  </defs>
+  <rect width="1200" height="760" rx="56" fill="url(#g)"/>
+  <circle cx="1010" cy="120" r="180" fill="#bfdbfe" opacity="0.45"/>
+  <rect x="760" y="80" width="320" height="320" rx="70" fill="#dbeafe" opacity="0.66" transform="rotate(15 920 240)"/>
+  <rect x="92" y="92" width="220" height="220" rx="58" fill="#fff" opacity="0.72" stroke="#bfdbfe" stroke-width="4"/>
+  <path d="M150 215 C210 130, 260 155, 252 225 C245 288, 155 288, 150 215Z" fill="#93c5fd" opacity="0.7"/>
+  <text x="92" y="400" font-family="Inter, Arial, sans-serif" font-size="82" font-weight="800" fill="#1e3a8a">YouTube Comments</text>
+  <text x="92" y="500" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="650" fill="#64748b">Sentiment + Topic Modeling</text>
+  <rect x="92" y="575" width="520" height="72" rx="36" fill="#ffffff" opacity="0.78" filter="url(#s)"/>
+  <text x="132" y="623" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" fill="#2563eb">Python / Shorthand</text>
+</svg>
