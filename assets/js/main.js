@@ -25,12 +25,18 @@ function driveThumb(url){
 const coverMap = {
   kaco: {src: rootPrefix()+'assets/images/covers/kaco.jpg', label: 'Brand guideline preview'},
   noodles: {src: rootPrefix()+'assets/images/covers/noodles.jpg', label: 'Brand guideline preview'},
+  xppen: {src: rootPrefix()+'assets/images/covers/xppen.jpg', label: 'Campaign proposal preview'},
   meituan: {src: rootPrefix()+'assets/images/covers/meituan.jpg', label: 'H5 activity page preview'},
+  'fashion-xhs': {src: rootPrefix()+'assets/images/covers/lofficiel.jpg', label: 'Xiaohongshu account preview'},
+  'campus-media': {src: rootPrefix()+'assets/images/covers/campus-media.jpg', label: 'WeChat editorial preview'},
+  'personal-xhs': {src: rootPrefix()+'assets/images/covers/personal-xhs.jpg', label: 'Personal Xiaohongshu preview'},
   crumbling: {src: rootPrefix()+'assets/images/covers/crumbling.jpg', label: 'Short film preview'},
-  podcast: {src: rootPrefix()+'assets/images/covers/podcast.jpg', label: 'Podcast trailer preview'},
+  podcast: {src: rootPrefix()+'assets/images/covers/podcast.jpg', label: 'Podcast preview'},
   'small-designs': {src: rootPrefix()+'assets/images/covers/small-designs.jpg', label: 'Creative works preview'},
+  youtube: {src: rootPrefix()+'assets/images/covers/youtube.jpg', label: 'Data storytelling preview'},
   tomodachi: {src: rootPrefix()+'assets/images/covers/tomodachi.jpg', label: 'Community analysis preview'},
-  ceps: {src: rootPrefix()+'assets/images/covers/ceps.jpg', label: 'Research poster preview'}
+  ceps: {src: rootPrefix()+'assets/images/covers/ceps.jpg', label: 'Research poster preview'},
+  'news-image': {src: rootPrefix()+'assets/images/covers/news-image.jpg', label: 'News image analysis preview'}
 };
 const caseHeadings = {
   en:{overview:'Project Overview', role:'My Role', process:'Process & Focus', outputs:'Preview & Key Outputs', links:'View Full Materials', summary:'Project Summary', note:'The preview image introduces the project visually. Full files, reports, production logs, and code are opened through the buttons below.'},
@@ -48,11 +54,19 @@ function projectProcess(p){
   };
   return common[p.category] || common.content;
 }
-function coverFor(p){return coverMap[p.id] || null}
+function coverFor(p){return coverMap[p.id] || {src: rootPrefix()+'assets/images/covers/default.jpg', label: loc(p.title)}}
 function renderProjectCover(p, small=false){
   const c = coverFor(p);
-  if(!c || !c.src) return '';
-  return `<figure class="project-cover ${small?'small':''}"><img src="${c.src}" alt="${c.label || loc(p.title)}" loading="lazy"><figcaption>${c.label || loc(p.title)}</figcaption></figure>`;
+  const fallback = rootPrefix()+'assets/images/covers/default.jpg';
+  return `<figure class="project-cover ${small?'small':''}"><img src="${c.src}" alt="${c.label || loc(p.title)}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'"><figcaption>${c.label || loc(p.title)}</figcaption></figure>`;
+}
+function uniqueProjects(){
+  const seen=new Set();
+  return projects.filter(p=>{
+    if(seen.has(p.id)) return false;
+    seen.add(p.id);
+    return true;
+  });
 }
 function projectCard(p){return `<article class="card project-card" data-category="${p.category}">
   ${renderProjectCover(p,true)}
@@ -66,7 +80,7 @@ function renderProjects(){
  const grid=document.querySelector('#projects-grid'); if(!grid) return;
  const lang=getLang(); grid.innerHTML='';
  const active=document.querySelector('.filter.active')?.dataset.filter || 'all';
- const shown=projects.filter(p=>active==='all'||p.category===active);
+ const shown=uniqueProjects().filter(p=>active==='all'||p.category===active);
  grid.innerHTML=shown.map(projectCard).join('');
  document.querySelectorAll('.filter').forEach(f=>{f.textContent=f.dataset.filter==='all'?(lang==='en'?'All':'全部'):tr('categories.'+f.dataset.filter);f.onclick=()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));f.classList.add('active');renderProjects()}})
 }
@@ -106,13 +120,8 @@ function renderProjectPage(){
  </div></section>`;
 }
 function renderGroupedSections(){
- const mount=document.querySelector('#grouped-projects'); if(!mount) return;
- const content = projects.filter(p=>p.category==='content');
- const data = projects.filter(p=>p.category==='data');
- const groups=[
-  ['campaign',content.filter(p=>p.subcat==='campaign')],['social',content.filter(p=>p.subcat==='social')],['campus',content.filter(p=>p.subcat==='campus')],['creative',content.filter(p=>p.subcat==='creative')],['extra',content.filter(p=>p.subcat==='extra')],['featuredData',data.filter(p=>p.subcat==='featuredData')],['moreData',data.filter(p=>p.subcat==='moreData')]
- ];
- mount.innerHTML=groups.filter(([,items])=>items.length).map(([key,items])=>`<h3 class="subsection-title">${tr('subcats.'+key)}</h3><div class="project-grid">${items.map(projectCard).join('')}</div>`).join('');
+ const mount=document.querySelector('#grouped-projects');
+ if(mount) mount.innerHTML='';
 }
 function renderAll(){initLangButtons();renderStaticText();renderProjects();renderGroupedSections();renderProjectPage()}
 document.addEventListener('DOMContentLoaded',renderAll);

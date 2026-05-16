@@ -30,3 +30,15 @@
 @supports not selector(:has(*)) {
   .project-card{min-height:0;}
 }
+
+
+/* Final preview-image fix: every project uses one stable local cover image. */
+.project-card{min-height:unset;}
+.project-card .project-cover.small{height:auto; aspect-ratio:16/9; margin-bottom:18px; background:#f8fbff;}
+.project-cover{background:#f8fbff;}
+.project-cover img{width:100%;height:100%;object-fit:contain;display:block;background:#f8fbff;}
+.project-cover.small img{aspect-ratio:auto;}
+.project-cover figcaption{font-size:.72rem;max-width:calc(100% - 24px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.project-cover:not(.small){aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;}
+.project-cover:not(.small) img{max-height:100%;height:100%;object-fit:contain;}
+@media (max-width:720px){.project-card .project-cover.small{aspect-ratio:16/10}.project-cover figcaption{font-size:.68rem}}

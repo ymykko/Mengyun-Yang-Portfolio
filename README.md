@@ -9,3 +9,6 @@ Changes in this version:
 - CV and LinkedIn links are connected.
 
 Upload the contents of this folder to the repository root: `index.html`, `assets/`, `projects/`, and `README.md`.
+
+
+Update: Project listing has been deduplicated. Each project appears only once in the Projects section; filters show the same unique list by category.
