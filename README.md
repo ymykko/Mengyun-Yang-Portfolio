@@ -13,3 +13,9 @@ Static GitHub Pages portfolio website.
 ## Deploy
 
 Upload all files in this folder to the root of a GitHub repository and enable GitHub Pages from `main` / `(root)`.
+
+
+Updated links:
+- CV link is connected to Google Drive.
+- LinkedIn link is included in Contact.
+- L’OFFICIEL China account name is used for the Xiaohongshu project.

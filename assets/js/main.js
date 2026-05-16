@@ -38,10 +38,10 @@ function projectProcess(p){
 function previewItems(p){
   if(p.id==='kaco'){
     return [
-      {img:'../assets/images/kaco/kaco-01.jpg', title:'Brand guideline cover'},
-      {img:'../assets/images/kaco/kaco-02.jpg', title:'Visual identity introduction'},
-      {img:'../assets/images/kaco/kaco-11.jpg', title:'Logo and tone of voice'},
-      {img:'../assets/images/kaco/kaco-15.jpg', title:'Colour system'}
+      {img:rootPrefix()+'assets/images/kaco/kaco-01.jpg', title:'Brand guideline cover'},
+      {img:rootPrefix()+'assets/images/kaco/kaco-02.jpg', title:'Visual identity introduction'},
+      {img:rootPrefix()+'assets/images/kaco/kaco-11.jpg', title:'Logo and tone of voice'},
+      {img:rootPrefix()+'assets/images/kaco/kaco-15.jpg', title:'Colour system'}
     ];
   }
   const lang=getLang();
